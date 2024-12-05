@@ -1,23 +1,24 @@
 from flask import Flask
 from flask_mysqldb import MySQL
+from flask_bcrypt import Bcrypt
+from app.main.routes import main  # Import the main blueprint
 
-mysql = MySQL()
+app = Flask(__name__)
 
-def create_app():
-    app = Flask(__name__)
+# Setup MySQL configuration
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'your_mysql_user'
+app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_DB'] = 'your_database_name'
 
-    # Configurations
-    app.config['SECRET_KEY'] = 'your_secret_key'
-    app.config['MYSQL_HOST'] = 'localhost'
-    app.config['MYSQL_USER'] = 'root'
-    app.config['MYSQL_PASSWORD'] = ''
-    app.config['MYSQL_DB'] = 'event_booking'
+# Setup Bcrypt for password hashing
+bcrypt = Bcrypt(app)
 
-    # Initialize MySQL
-    mysql.init_app(app)
+# Initialize MySQL
+mysql = MySQL(app)
 
-    # Register blueprints
-    from .routes import main
-    app.register_blueprint(main)
+# Register blueprint
+app.register_blueprint(main)
 
-    return app
+if __name__ == '__main__':
+    app.run(debug=True)
