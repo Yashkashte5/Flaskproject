@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Book Event</title>
+</head>
+<body>
+    <h1>Book Event</h1>
+    <p>Event Name: {{ event.event_name }}</p>
+    <p>Event Date: {{ event.event_date }}</p>
+    <p>Event Time: {{ event.event_time }}</p>
+    <p>Location: {{ event.location }}</p>
+
+    <form method="POST">
+        <label for="num_seats">Number of Seats:</label>
+        <input type="number" id="num_seats" name="num_seats" min="1" required>
+        <button type="submit">Confirm Booking</button>
+    </form>
+    <a href="{{ url_for('user_dashboard') }}">Cancel</a>
+</body>
+</html>
