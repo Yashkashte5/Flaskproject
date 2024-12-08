@@ -1,4 +1,4 @@
-`**Event Booking System**`
+**Event Booking System**
 
 **Introduction**
 The Event Booking System is a web-based platform designed to simplify the process of booking seats for events. This system provides users with a streamlined experience to browse events, view event details, and book seats using an intuitive user interface. By integrating modern technologies and frameworks, the system ensures reliability, scalability, and user-friendliness.
